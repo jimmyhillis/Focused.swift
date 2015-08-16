@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Focused {
+public struct Focused {
     /*
         Return the current focused element (a NS..) within the currently
         focused application on your OS
     */
-    static func element() -> AXUIElementRef? {
+    public static func element() -> AXUIElementRef? {
         let systemWideElement: AXUIElementRef = AXUIElementCreateSystemWide().takeRetainedValue()
         let result: AXUIElementRef? = systemWideElement.getAttribute(kAXFocusedUIElementAttribute)
         return result
@@ -21,7 +21,7 @@ struct Focused {
         Return the value (text) of the user's current focused element,
         which should be text within an editor
     */
-    static func elementText() -> String? {
+    public static func elementText() -> String? {
         if let focusedElement: AXUIElementRef = Focused.element() {
             if let selectedText: AXValueRef = focusedElement.getAttribute(kAXValueAttribute) {
                 return "\(selectedText)"
@@ -33,7 +33,7 @@ struct Focused {
         Return the value (text) of the user's current highlighted text,
         within the currently focused element
     */
-    static func highlightedText() -> String? {
+    public static func highlightedText() -> String? {
         if let focusedElement: AXUIElementRef = Focused.element() {
             if let highlightedText: AXValueRef = focusedElement.getAttribute(kAXSelectedTextAttribute) {
                 if !"\(highlightedText)".isEmpty {
