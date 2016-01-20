@@ -52,7 +52,7 @@ public extension AXUIElement {
     */
     public func getAttribute<T>(property: String) -> T? {
         var ptr: Unmanaged<AnyObject>?
-        if AXUIElementCopyAttributeValue(self, property, &ptr) != AXError(kAXErrorSuccess) {
+        if AXUIElementCopyAttributeValue(self, property, ptr) != AXError.Success {
             return nil
         }
         return ptr.map {
