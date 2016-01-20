@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = "Focused"
-  s.version               = "0.1.0"
+  s.version               = "0.2.0"
   s.summary               = "An easy way to get information about the currently focused app on OS X."
   s.homepage              = "https://github.com/jimmyhillis/Focused.swift"
   s.license               = "MIT"

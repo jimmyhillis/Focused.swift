@@ -51,12 +51,12 @@ public extension AXUIElement {
         an AXUIElement (e.g. the text of a focused NSTextField)
     */
     public func getAttribute<T>(property: String) -> T? {
-        var ptr: Unmanaged<AnyObject>?
-        if AXUIElementCopyAttributeValue(self, property, &ptr) != AXError(kAXErrorSuccess) {
+        var ptr: AnyObject?
+        if AXUIElementCopyAttributeValue(self, property, &ptr) != AXError.Success {
             return nil
         }
         return ptr.map {
-            $0.takeRetainedValue() as! T
+            $0 as! T
         }
     }
 }
